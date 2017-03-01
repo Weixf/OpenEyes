@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_splash"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="zjhl.wxf.openeyes.view.SplashActivity">
+
+    <ImageView
+        android:id="@+id/splash_back_ground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/launch_background" />
+
+
+    <ImageView
+        android:id="@+id/splash_eyes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@mipmap/ic_eye_white" />
+
+    <ImageView
+        android:id="@+id/splash_black_out_eyes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_eye_black_outer"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/splash_black_in_eyes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_eye_black_inner"
+        android:visibility="invisible" />
+
+
+    <TextView
+        android:id="@+id/splash_open_eye_english"
+        style="@style/splash_text_style"
+        android:layout_below="@id/splash_eyes"
+        android:text="@string/open_eyes_english" />
+
+    <TextView
+        android:id="@+id/splash_open_eye_chinese"
+        style="@style/splash_text_style"
+        android:layout_below="@id/splash_open_eye_english"
+        android:layout_marginTop="10dp"
+        android:text="@string/open_eyes" />
+
+    <TextView
+        android:id="@+id/splay_for_today"
+        style="@style/splash_text_style"
+        android:layout_below="@id/splash_open_eye_chinese"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="@string/for_ntoday"
+        android:textColor="@color/black"
+        android:visibility="invisible" />
+
+
+    <TextView
+        android:id="@+id/splash_text_bottom_english"
+        style="@style/splash_text_style"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:text="@string/splash_text_bottom_english"
+        android:textSize="@dimen/dimen_30_text" />
+
+    <TextView
+        android:id="@+id/splash_text_bottom"
+        style="@style/splash_text_style"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/dimen_30"
+        android:text="@string/selected_video_recommended_dailyopen_your_eyes"
+        android:textSize="@dimen/dimen_30_text" />
+</RelativeLayout>

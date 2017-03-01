@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">小V视频</string>
+    <string name="splash_activity">欢迎界面</string>
+    <string name="open_eyes">开眼</string>
+    <string name="open_eyes_english">eyepetizer</string>
+    <string name="selected_video_recommended_dailyopen_your_eyes">每日精选视频推荐，让你大开眼界</string>
+    <string name="splash_text_bottom_english">Daily appetizer for your eyes.Widen horizon.</string>
+    <string name="for_ntoday">for\nToday</string>
+
+</resources>
