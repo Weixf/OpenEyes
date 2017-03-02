@@ -8,4 +8,9 @@
     <dimen name="dimen_20">10dp</dimen>
     <dimen name="dimen_30">15dp</dimen>
     <dimen name="dimen_50_text">25sp</dimen>
+    <dimen name="dimen_80">40dp</dimen>
+    <dimen name="dimen_100">50dp</dimen>
+    <dimen name="dimen_400">200dp</dimen>
+    <dimen name="dimen_160">80dp</dimen>
+    <dimen name="dimen_20_text">10sp</dimen>
 </resources>

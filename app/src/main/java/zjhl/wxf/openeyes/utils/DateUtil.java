@@ -97,6 +97,14 @@ public class DateUtil {
         Calendar calendar = Calendar.getInstance();
         return df.format(calendar.getTime());
     }
+    /**
+     * 获取当前时间，显示格式为 2017-02-23 16:35:28
+     */
+    public static String getTimeString(String s) {
+        SimpleDateFormat df = new SimpleDateFormat(s);
+        Calendar calendar = Calendar.getInstance();
+        return df.format(calendar.getTime());
+    }
 
 
     /**

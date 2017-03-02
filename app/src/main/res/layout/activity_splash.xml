@@ -25,16 +25,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@drawable/ic_eye_black_outer"
-        android:visibility="invisible" />
+        android:alpha="0"
+        android:src="@drawable/ic_eye_black_outer" />
 
     <ImageView
         android:id="@+id/splash_black_in_eyes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:src="@drawable/ic_eye_black_inner"
-        android:visibility="invisible" />
+        android:alpha="0"
+        android:src="@drawable/ic_eye_black_inner" />
 
 
     <TextView
@@ -53,12 +53,13 @@
     <TextView
         android:id="@+id/splay_for_today"
         style="@style/splash_text_style"
-        android:layout_below="@id/splash_open_eye_chinese"
+        android:layout_below="@id/splash_open_eye_english"
         android:gravity="center"
         android:maxLines="2"
+        android:layout_marginTop="10dp"
         android:text="@string/for_ntoday"
         android:textColor="@color/black"
-        android:visibility="invisible" />
+        android:alpha="0" />
 
 
     <TextView
@@ -66,15 +67,16 @@
         style="@style/splash_text_style"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="@dimen/dimen_100"
         android:text="@string/splash_text_bottom_english"
         android:textSize="@dimen/dimen_30_text" />
+
 
     <TextView
         android:id="@+id/splash_text_bottom"
         style="@style/splash_text_style"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/dimen_30"
+        android:layout_marginBottom="@dimen/dimen_40"
         android:text="@string/selected_video_recommended_dailyopen_your_eyes"
         android:textSize="@dimen/dimen_30_text" />
 </RelativeLayout>

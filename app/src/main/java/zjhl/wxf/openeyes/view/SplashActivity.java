@@ -1,8 +1,7 @@
 package zjhl.wxf.openeyes.view;
 
-import android.animation.AnimatorSet;
+import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
@@ -14,22 +13,29 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import zjhl.wxf.openeyes.Constant;
 import zjhl.wxf.openeyes.R;
 import zjhl.wxf.openeyes.base.BaseActivity;
 import zjhl.wxf.openeyes.utils.AnimationUtil;
+import zjhl.wxf.openeyes.utils.DateUtil;
+import zjhl.wxf.openeyes.utils.SharePreferenceUtil;
+import zjhl.wxf.openeyes.utils.TextViewUtil;
 
 /**
  * Create by Weixf
  * Date on 2017/2/28
- * Describe 欢迎界面
+ * Describe 欢迎界面,完全仿照开眼做的
  */
 public class SplashActivity extends BaseActivity {
     private static final String TAG = "SplashActivity";
-    private final int SPLASH_INTENT_TIME = 3000;
     private final int duration = 2000;
-    private int x;
-    private int y;
-
+    private final int upDistinct=-400;
+    @BindView(R.id.splash_black_out_eyes)
+    ImageView splashBlackOutEyes;
+    @BindView(R.id.splash_black_in_eyes)
+    ImageView splashBlackInEyes;
+    @BindView(R.id.splay_for_today)
+    TextView splayForToday;
     @BindView(R.id.splash_eyes)
     ImageView splashEyes;
     @BindView(R.id.splash_open_eye_english)
@@ -44,7 +50,6 @@ public class SplashActivity extends BaseActivity {
     RelativeLayout activitySplash;
     @BindView(R.id.splash_back_ground)
     ImageView splashBackGround;
-    private AnimatorSet animatorSet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +59,18 @@ public class SplashActivity extends BaseActivity {
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
         initView();
+    }
+
+    /**
+     * 判断是否是第一次登录，是的话跳转到GuideActivity界面，否的话跳转到MainActivity
+     */
+    private void judgeIfFirstIn() {
+        if (SharePreferenceUtil.getBooleanSp(this, Constant.loginSpName,Constant.loginSpKey)){
+            startActivity(new Intent(SplashActivity.this,GuideActivity.class));
+        }else {
+            startActivity(new Intent(SplashActivity.this,MainActivity.class));
+        }
+
     }
 
     /**
@@ -68,21 +85,48 @@ public class SplashActivity extends BaseActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                //图片上升而且消失
-                AnimationUtil.obTranslateAndAlpha(splashEyes, duration,0,-400,1,0).start();
+                //图片上升，白色眼图片消失，黑色眼图片显示
+                AnimationUtil.obTranslateY(splashBlackOutEyes,duration,0,upDistinct).start();
+                AnimationUtil.obTranslateY(splashBlackInEyes,duration,0,upDistinct).start();
+                AnimationUtil.obTranslateAndAlpha(splashEyes, duration, 0, upDistinct, 1, 0).start();
+                AnimationUtil.obAlpha(splashBlackOutEyes, duration, 0, 1).start();
+                AnimationUtil.obAlpha(splashBlackInEyes,duration,0,1).start();
                 //英文上升并且变黑
-                AnimationUtil.obTranslateAndChangeColor(splashOpenEyeEnglish,duration,0,-400,Color.WHITE,Color.BLACK).start();
+                AnimationUtil.obTranslateAndChangeColor(splashOpenEyeEnglish, duration, 0, upDistinct, Color.WHITE, Color.BLACK).start();
+                AnimationUtil.obTranslateY(splayForToday,duration,0,upDistinct).start();
                 //中文消失
-                AnimationUtil.obAlpha(splashOpenEyeChinese,duration,1,0).start();
-                AnimationUtil.obAlpha(splashTextBottomEnglish,duration,1,0).start();
-                AnimationUtil.obAlpha(splashTextBottom,duration,1,0).start();
+                AnimationUtil.obAlpha(splashOpenEyeChinese, duration, 1, 0).start();
+                AnimationUtil.obAlpha(splashTextBottomEnglish, duration, 1, 0).start();
+                AnimationUtil.obAlpha(splashTextBottom, duration, 1, 0).start();
                 //背景消失
-                AnimationUtil.obAlpha(splashBackGround,duration,1,0).start();
-                //
-                TextView textView=new TextView(SplashActivity.this);
-                textView.setText("fdas");
+                AnimationUtil.obAlpha(splashBackGround, duration, 1, 0).start();
+                //for day 显示
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        AnimationUtil.obAlpha(splayForToday,duration,0,1).start();
+                        //日期和今日精选显示
+                        splashTextBottomEnglish.setText("-"+DateUtil.getTimeString(DateUtil.MONTH_DAY)+"-");
+                        splashTextBottomEnglish.setTextColor(Color.BLACK);
+                        splashTextBottom.setText("今日精彩 >>>");
+                        splashTextBottom.setTextColor(Color.BLACK);
+                        AnimationUtil.obAlpha(splashTextBottomEnglish,duration,0,1).start();
+                        AnimationUtil.obAlpha(splashTextBottom,duration,0,1).start();
+                        //眼睛里面的月亮旋转
+                        AnimationUtil.obRotate(splashBlackInEyes,duration,0,360).start();
+                        //延时两秒跳转
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                judgeIfFirstIn();
+                                finish();
+                            }
+                        },duration);
+                    }
+                },duration);
             }
-        }, SPLASH_INTENT_TIME);
+        }, duration);
+
     }
 
     /**
@@ -97,8 +141,8 @@ public class SplashActivity extends BaseActivity {
      * 设置字体格式
      */
     private void initText() {
-        Typeface typeface = Typeface.createFromAsset(this.getAssets(), "fonts/Lobster-1.4.otf");
-        splashOpenEyeEnglish.setTypeface(typeface);
-        splashTextBottomEnglish.setTypeface(typeface);
+        TextViewUtil.setTypeFace(this,splashOpenEyeEnglish,"fonts/Lobster-1.4.otf" );
+        TextViewUtil.setTypeFace(this,splashTextBottomEnglish,"fonts/Lobster-1.4.otf" );
+        TextViewUtil.setTypeFace(this,splayForToday,"fonts/Lobster-1.4.otf" );
     }
 }
