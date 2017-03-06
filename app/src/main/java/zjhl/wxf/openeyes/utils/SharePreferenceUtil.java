@@ -21,6 +21,7 @@ public class SharePreferenceUtil {
     public static boolean getBooleanSp(Context context, String name, String key) {
         SharedPreferences sp = context.getSharedPreferences(name, Context.MODE_PRIVATE);
         return sp.getBoolean(key, true);
+//        return  true;
     }
 
     /**

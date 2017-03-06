@@ -3,7 +3,6 @@ package zjhl.wxf.openeyes.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,6 @@ import zjhl.wxf.openeyes.utils.TextViewUtil;
  */
 public class GuideFragment extends BaseFragment {
     private static final String TAG = "GuideFragment";
-    private TextView textView;
 
     public GuideFragment() {
         // Required empty public constructor
@@ -30,12 +28,9 @@ public class GuideFragment extends BaseFragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View inflate = inflater.inflate(R.layout.fragment_guide, container, false);
-        textView = (TextView) inflate.findViewById(R.id.guide_fragment_text);
+        TextView textView = (TextView) inflate.findViewById(R.id.guide_fragment_text);
         TextViewUtil.setTypeFace(getContext(), textView, "fonts/Lobster-1.4.otf");
-        if (savedInstanceState != null) {
-            textView.setText(getArguments().getString("text"));
-            Log.e(TAG, "onCreateView: "+textView.getText().toString() );
-        }
+        textView.setText(getArguments().getString("text"));
         return inflate;
     }
 

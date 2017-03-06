@@ -1,21 +1,19 @@
 package zjhl.wxf.openeyes.api;
 
 import retrofit2.http.GET;
-import retrofit2.http.Path;
+import retrofit2.http.Query;
 import rx.Observable;
-import zjhl.wxf.openeyes.bean.Bean;
+import zjhl.wxf.openeyes.bean.ChoicenessBean;
 
 /**
  * Created by Weixf
  * Date on 2017/2/21.
- * Describe
+ * Describe 使用Retrofit进行网络请求
  */
 
 public interface ApiServer {
-//    https://api.github.com/users/Guolei1130
-//    @GET("/users/{user}")
-//    Call<Bean> getDetail(@Path("user") String user);
-    @GET("/users/{user}")
-    Observable<Bean> getDetail(@Path("user") String user);
+    //得到精选部分的数据
+    @GET("api/v4/tabs/selected")
+    Observable<ChoicenessBean> getChoicenessData(@Query("date") long date, @Query("num") int num, @Query("page") int page);
 
 }

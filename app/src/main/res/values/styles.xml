@@ -17,6 +17,7 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+    <!--欢迎界面文字格式-->
     <style name="splash_text_style">
         <item name="android:textSize">@dimen/dimen_50_text</item>
         <item name="android:layout_height">wrap_content</item>
@@ -25,6 +26,7 @@
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_20</item>
     </style>
+    <!--引导界面的文字格式-->
     <style name="guide_text_style">
         <item name="android:textSize">@dimen/dimen_30_text</item>
         <item name="android:layout_height">wrap_content</item>
@@ -32,6 +34,16 @@
         <item name="android:textColor">@color/white</item>
         <item name="android:layout_centerHorizontal">true</item>
         <item name="android:lineSpacingExtra">@dimen/dimen_20</item>
+    </style>
+    <!--MainActivity的radiobutton格式-->
+    <style name="main_activity_radiobutton_style">
+        <item name="android:button">@null</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/dimen_20_text</item>
+
     </style>
 
 </resources>

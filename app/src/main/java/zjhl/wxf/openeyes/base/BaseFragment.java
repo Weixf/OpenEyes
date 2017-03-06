@@ -22,7 +22,7 @@ public class BaseFragment extends RxFragment {
     }
 
     @Override
-    public void onCreate( Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
@@ -57,7 +57,7 @@ public class BaseFragment extends RxFragment {
     }
 
     @Override
-    public void onActivityCreated( Bundle savedInstanceState) {
+    public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
     }
 
