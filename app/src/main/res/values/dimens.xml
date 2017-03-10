@@ -21,4 +21,9 @@
     <dimen name="dimen_10">5dp</dimen>
     <dimen name="dimen_24_text">12sp</dimen>
     <dimen name="dimen_26_text">13sp</dimen>
+    <dimen name="dimen_360">180dp</dimen>
+    <dimen name="dimen_560">280dp</dimen>
+    <dimen name="dimen_550">275dp</dimen>
+    <dimen name="dimen_60_text">30sp</dimen>
+    <dimen name="dimen_140">70dp</dimen>
 </resources>

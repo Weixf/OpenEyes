@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/dimen_10"
+    android:layout_marginTop="@dimen/dimen_10"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/choiceness_square_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="@dimen/dimen_40"
+        android:layout_marginTop="@dimen/dimen_40"
+        android:text="热门分类"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/dimen_20"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="@dimen/dimen_360"
+                android:layout_height="@dimen/dimen_360">
+
+                <ImageView
+                    android:id="@+id/choiceness_square_image1"
+                    style="@style/choiceness_suqare_image"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/choiceness_square_type1"
+                    style="@style/choiceness_suqare_type"
+                    android:text="时尚" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="@dimen/dimen_360"
+                android:layout_height="@dimen/dimen_360"
+                android:layout_marginStart="@dimen/dimen_10">
+
+                <ImageView
+                    android:id="@+id/choiceness_square_image2"
+                    style="@style/choiceness_suqare_image"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/choiceness_square_type2"
+                    style="@style/choiceness_suqare_type"
+                    android:text="时尚" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="@dimen/dimen_360"
+                android:layout_height="@dimen/dimen_360"
+                android:layout_marginStart="@dimen/dimen_10">
+
+                <ImageView
+                    android:id="@+id/choiceness_square_image3"
+                    style="@style/choiceness_suqare_image"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/choiceness_square_type3"
+                    style="@style/choiceness_suqare_type"
+                    android:text="时尚" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="@dimen/dimen_360"
+                android:layout_height="@dimen/dimen_360"
+                android:layout_marginStart="@dimen/dimen_10">
+
+                <ImageView
+                    android:id="@+id/choiceness_square_image4"
+                    style="@style/choiceness_suqare_image"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/choiceness_square_type4"
+                    style="@style/choiceness_suqare_type"
+                    android:text="时尚" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="@dimen/dimen_360"
+                android:layout_height="@dimen/dimen_360"
+                android:layout_marginStart="@dimen/dimen_10">
+
+                <ImageView
+                    android:id="@+id/choiceness_square_image5"
+                    style="@style/choiceness_suqare_image"
+                    android:src="@mipmap/ic_launcher" />
+
+                <TextView
+                    android:id="@+id/choiceness_square_type5"
+                    style="@style/choiceness_suqare_type"
+                    android:text="时尚" />
+            </RelativeLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>

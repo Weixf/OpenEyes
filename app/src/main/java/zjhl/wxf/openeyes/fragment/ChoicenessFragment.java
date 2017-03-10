@@ -38,9 +38,12 @@ import zjhl.wxf.openeyes.adapter.SuperAdapter;
 import zjhl.wxf.openeyes.adapter.SuperViewHolder;
 import zjhl.wxf.openeyes.api.RetrofitUtil;
 import zjhl.wxf.openeyes.base.BaseFragment;
+import zjhl.wxf.openeyes.bean.ChoicenessBannerBean;
+import zjhl.wxf.openeyes.bean.ChoicenessSquareCardBean;
 import zjhl.wxf.openeyes.bean.ChoicenessTextFooterBean;
 import zjhl.wxf.openeyes.bean.ChoicenessTextHeaderBean;
 import zjhl.wxf.openeyes.bean.ChoicenessVideoBean;
+import zjhl.wxf.openeyes.bean.ChoicenessVideoCollectionOfAuthorBean;
 import zjhl.wxf.openeyes.bean.ChoicenessVideoCollectionOfFollowBean;
 import zjhl.wxf.openeyes.bean.ChoicenessVideoCollectionWithCoverBean;
 import zjhl.wxf.openeyes.utils.DateUtil;
@@ -56,7 +59,7 @@ import static zjhl.wxf.openeyes.utils.GsonUtil.fromJson;
  * Decribe 精选界面的fragment
  */
 public class ChoicenessFragment extends BaseFragment {
-//    @BindView(R.id.fragment_choiceness_search)
+    //    @BindView(R.id.fragment_choiceness_search)
 //    ImageView search;
     @BindView(R.id.fragment_choiceness_recycleView)
     RecyclerView recycleView;
@@ -74,6 +77,9 @@ public class ChoicenessFragment extends BaseFragment {
     private DataHolder<ChoicenessVideoCollectionWithCoverBean> collecBean;
     private DataHolder<ChoicenessTextHeaderBean> headBean;
     private DataHolder<ChoicenessVideoCollectionOfFollowBean> followBean;
+    private DataHolder<ChoicenessBannerBean> bannerBean;
+    private DataHolder<ChoicenessSquareCardBean> squareBean;
+    private DataHolder<ChoicenessVideoCollectionOfAuthorBean> authorBean;
 
     public ChoicenessFragment() {
         // Required empty public constructor
@@ -86,7 +92,14 @@ public class ChoicenessFragment extends BaseFragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_choiceness, container, false);
         ButterKnife.bind(this, view);
-        final int[] layoutId = {R.layout.item_choiceness_video, R.layout.item_choiceness_textfoot, R.layout.item_choiceness_video_collection, R.layout.item_choiceness_video_texthead, R.layout.item_choiceness_video_author};
+        final int[] layoutId = {R.layout.item_choiceness_video,
+                R.layout.item_choiceness_textfoot,
+                R.layout.item_choiceness_video_collection,
+                R.layout.item_choiceness_video_texthead,
+                R.layout.item_choiceness_video_author,
+                R.layout.item_choiceness_banner,
+                R.layout.item_choiceness_square,
+                R.layout.item_choiceness_video_collection_of_author};
         adapter = new SuperAdapter(getContext(), layoutId);
         initRecycleView();
         initDataHolder();
@@ -97,7 +110,7 @@ public class ChoicenessFragment extends BaseFragment {
     /**
      * retrofit请求数据
      */
-    private void initData(long date, final int num, int page) {
+    private void initData(final long date, final int num, int page) {
         RetrofitUtil.getApiServer().getChoicenessData(date, num, page)
                 .compose(this.<JsonObject>bindUntilEvent(FragmentEvent.DESTROY))
                 .subscribeOn(Schedulers.io())
@@ -110,14 +123,13 @@ public class ChoicenessFragment extends BaseFragment {
                             JSONObject json = new JSONObject(bean.toString());
                             itemList = json.getJSONArray("itemList");
                             url = json.optString("nextPageUrl");
+                            Log.e(TAG, "call: " + url);
                             //不得不服  这个参数竟然设成"null"  好大的坑
-                            if (!url .equals("null") ) {
-                                Log.e(TAG, "call: " + url);
+                            if (!url.equals("null")) {
                                 datenum = Long.parseLong(url.substring(54, 67));
                                 number = Integer.parseInt(url.substring(72, 73));
                                 pag = Integer.parseInt(url.substring(79, 80));
                             }
-                            Log.e(TAG, "call: " + url + "      " + datenum + "    " + num);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -156,6 +168,21 @@ public class ChoicenessFragment extends BaseFragment {
                                         ChoicenessVideoCollectionOfFollowBean item5 = GsonUtil.fromJson(jsonObject.toString(), new TypeToken<ChoicenessVideoCollectionOfFollowBean>() {
                                         }.getType());
                                         data.add(new LayoutWrapper(R.layout.item_choiceness_video_author, item5, followBean));
+                                        break;
+                                    case "banner2":
+                                        ChoicenessBannerBean item6 = GsonUtil.fromJson(jsonObject.toString(), new TypeToken<ChoicenessBannerBean>() {
+                                        }.getType());
+                                        data.add(new LayoutWrapper(R.layout.item_choiceness_banner, item6, bannerBean));
+                                        break;
+                                    case "squareCardCollection":
+                                        ChoicenessSquareCardBean item7 = GsonUtil.fromJson(jsonObject.toString(), new TypeToken<ChoicenessSquareCardBean>() {
+                                        }.getType());
+                                        data.add(new LayoutWrapper(R.layout.item_choiceness_square, item7, squareBean));
+                                        break;
+                                    case "videoCollectionOfAuthorWithCover":
+                                        ChoicenessVideoCollectionOfAuthorBean item8 = GsonUtil.fromJson(jsonObject.toString(), new TypeToken<ChoicenessVideoCollectionOfAuthorBean>() {
+                                        }.getType());
+                                        data.add(new LayoutWrapper(R.layout.item_choiceness_video_collection_of_author,item8,authorBean));
                                         break;
                                 }
                             } catch (JSONException e) {
@@ -367,6 +394,118 @@ public class ChoicenessFragment extends BaseFragment {
 
             }
         };
+        /**
+         * Type 为banner的
+         */
+        bannerBean = new DataHolder<ChoicenessBannerBean>() {
+            @Override
+            public void bind(Context context, SuperViewHolder holder, ChoicenessBannerBean item, int position) {
+                ImageView image = holder.getView(R.id.choiceness_banner);
+                ImageUtil.loadImage(getContext(), item.getData().getImage(), image);
+            }
+        };
+        /**
+         * Type为 squareCardCollection
+         *
+         */
+        squareBean = new DataHolder<ChoicenessSquareCardBean>() {
+            @Override
+            public void bind(Context context, SuperViewHolder holder, ChoicenessSquareCardBean item, int position) {
+                ImageView image1 = holder.getView(R.id.choiceness_square_image1);
+                ImageView image2 = holder.getView(R.id.choiceness_square_image2);
+                ImageView image3 = holder.getView(R.id.choiceness_square_image3);
+                ImageView image4 = holder.getView(R.id.choiceness_square_image4);
+                ImageView image5 = holder.getView(R.id.choiceness_square_image5);
+                TextView title = holder.getView(R.id.choiceness_square_title);
+                TextView type1 = holder.getView(R.id.choiceness_square_type1);
+                TextView type2 = holder.getView(R.id.choiceness_square_type2);
+                TextView type3 = holder.getView(R.id.choiceness_square_type3);
+                TextView type4 = holder.getView(R.id.choiceness_square_type4);
+                TextView type5 = holder.getView(R.id.choiceness_square_type5);
+                title.setText(item.getData().getHeader().getTitle());
+                type1.setText(item.getData().getItemList().get(0).getData().getTitle());
+                type2.setText(item.getData().getItemList().get(1).getData().getTitle());
+                type3.setText(item.getData().getItemList().get(2).getData().getTitle());
+                type4.setText(item.getData().getItemList().get(3).getData().getTitle());
+                type5.setText(item.getData().getItemList().get(4).getData().getTitle());
+                ImageUtil.loadImage(getContext(), item.getData().getItemList().get(0).getData().getImage(), image1);
+                ImageUtil.loadImage(getContext(), item.getData().getItemList().get(1).getData().getImage(), image2);
+                ImageUtil.loadImage(getContext(), item.getData().getItemList().get(2).getData().getImage(), image3);
+                ImageUtil.loadImage(getContext(), item.getData().getItemList().get(3).getData().getImage(), image4);
+                ImageUtil.loadImage(getContext(), item.getData().getItemList().get(4).getData().getImage(), image5);
+            }
+        };
+        /**
+         * Type为videoCollectionOfAuthorWithCover的item
+         */
+        authorBean=new DataHolder<ChoicenessVideoCollectionOfAuthorBean>() {
+            @Override
+            public void bind(Context context, SuperViewHolder holder, ChoicenessVideoCollectionOfAuthorBean item, int position) {
+                ImageView headImage = holder.getView(R.id.choiceness_video_collection_of_author_headimage);
+                ImageView headIcon=holder.getView(R.id.choiceness_video_collection_of_author_head_icon);
+                TextView headTitle=holder.getView(R.id.choiceness_video_collection_of_author_title);
+                TextView headDescribe=holder.getView(R.id.choiceness_video_collection_of_author_describe);
+                ImageUtil.loadImage(getContext(), item.getData().getHeader().getCover(), headImage);
+                ImageUtil.loadCircleImage(getContext(),item.getData().getHeader().getIcon(),headIcon);
+                headTitle.setText(item.getData().getHeader().getTitle());
+                headDescribe.setText(item.getData().getHeader().getDescription());
+                List<ImageView> images = new ArrayList<>();
+                List<TextView> types = new ArrayList<>();
+                ImageView image1 = holder.getView(R.id.choiceness_video_collection_of_author_item_image1);
+                ImageView image2 = holder.getView(R.id.choiceness_video_collection_of_author_item_image2);
+                ImageView image3 = holder.getView(R.id.choiceness_video_collection_of_author_item_image3);
+                ImageView image4 = holder.getView(R.id.choiceness_video_collection_of_author_item_image4);
+                ImageView image5 = holder.getView(R.id.choiceness_video_collection_of_author_item_image5);
+                TextView type1 = holder.getView(R.id.choiceness_video_collection_of_author_item_type1);
+                TextView type2 = holder.getView(R.id.choiceness_video_collection_of_author_item_type2);
+                TextView type3 = holder.getView(R.id.choiceness_video_collection_of_author_item_type3);
+                TextView type4 = holder.getView(R.id.choiceness_video_collection_of_author_item_type4);
+                TextView type5 = holder.getView(R.id.choiceness_video_collection_of_author_item_type5);
+                TextView duration1 = holder.getView(R.id.choiceness_video_collection_of_author_item_duration1);
+                TextView duration2 = holder.getView(R.id.choiceness_video_collection_of_author_item_duration2);
+                TextView duration3 = holder.getView(R.id.choiceness_video_collection_of_author_item_duration3);
+                TextView duration4 = holder.getView(R.id.choiceness_video_collection_of_author_item_duration4);
+                TextView duration5 = holder.getView(R.id.choiceness_video_collection_of_author_item_duration5);
+                TextView title1 = holder.getView(R.id.choiceness_video_collection_of_author_item_title1);
+                TextView title2 = holder.getView(R.id.choiceness_video_collection_of_author_item_title2);
+                TextView title3 = holder.getView(R.id.choiceness_video_collection_of_author_item_title3);
+                TextView title4 = holder.getView(R.id.choiceness_video_collection_of_author_item_title4);
+                TextView title5 = holder.getView(R.id.choiceness_video_collection_of_author_item_title5);
+                images.add(image1);
+                images.add(image2);
+                images.add(image3);
+                images.add(image4);
+                images.add(image5);
+                types.add(type1);
+                types.add(type2);
+                types.add(type3);
+                types.add(type4);
+                types.add(type5);
+                types.add(duration1);
+                types.add(duration2);
+                types.add(duration3);
+                types.add(duration4);
+                types.add(duration5);
+                types.add(title1);
+                types.add(title2);
+                types.add(title3);
+                types.add(title4);
+                types.add(title5);
+                for (int i = 0; i < 5; i++) {
+                    types.get(i).setText(item.getData().getItemList().get(i).getData().getCategory());
+                }
+                for (int i = 5; i < 10; i++) {
+                    types.get(i).setText(DateUtil.secondToMinute(item.getData().getItemList().get(i - 5).getData().getDuration()));
+                }
+                for (int i = 10; i < 15; i++) {
+                    types.get(i).setText(item.getData().getItemList().get(i - 10).getData().getTitle());
+                }
+                for (int i = 0; i < 5; i++) {
+                    ImageUtil.loadImage(getContext(), item.getData().getItemList().get(i).getData().getCover().getFeed(), images.get(i));
+                }
+            }
+        };
+
     }
 
     /**
@@ -403,7 +542,7 @@ public class ChoicenessFragment extends BaseFragment {
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-                Log.e(TAG, "onScrolled: "+dx+"  "+dy );
+//                Log.e(TAG, "onScrolled: "+dx+"  "+dy );
             }
         });
     }

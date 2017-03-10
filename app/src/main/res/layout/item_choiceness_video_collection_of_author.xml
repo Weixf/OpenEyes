@@ -1,19 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/dimen_10"
+    android:layout_marginTop="@dimen/dimen_10"
     android:background="@color/white"
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/choiceness_video_collection_headimage"
+        android:id="@+id/choiceness_video_collection_of_author_headimage"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dimen_500"
         android:scaleType="fitXY"
         android:src="@mipmap/ic_launcher" />
 
+    <RelativeLayout
+        android:id="@+id/relativalayout"
+        android:layout_width="match_parent"
+        android:background="@color/gray_light"
+        android:layout_height="@dimen/dimen_500">
+
+
+        <TextView
+            android:id="@+id/choiceness_video_collection_of_author_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="@dimen/dimen_20"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_40_text" />
+
+        <ImageView
+            android:id="@+id/choiceness_video_collection_of_author_head_icon"
+            android:layout_width="@dimen/dimen_140"
+            android:layout_height="@dimen/dimen_140"
+            android:layout_above="@id/choiceness_video_collection_of_author_title"
+            android:layout_centerInParent="true" />
+
+        <TextView
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:id="@+id/choiceness_video_collection_of_author_describe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/choiceness_video_collection_of_author_title"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dimen_20"
+            android:layout_marginStart="@dimen/dimen_40"
+            android:layout_marginEnd="@dimen/dimen_40"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_20_text" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </RelativeLayout>
+
+
     <HorizontalScrollView
+        android:layout_below="@id/relativalayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="@dimen/dimen_10"
@@ -32,7 +77,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/choiceness_video_collection_item_image1"
+                    android:id="@+id/choiceness_video_collection_of_author_item_image1"
                     style="@style/choiceness_video_collection_item_image_style" />
 
                 <RelativeLayout
@@ -42,33 +87,33 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/choiceness_video_collection_item_title1"
+                        android:id="@+id/choiceness_video_collection_of_author_item_title1"
                         style="@style/choiceness_video_collection_item_text_style" />
 
                     <TextView
+                        android:id="@+id/choiceness_video_collection_of_author_item_type1"
                         style="@style/choiceness_video_collection_item_text__category_style"
-                        android:id="@+id/choiceness_video_collection_item_type1"
-                        android:layout_below="@id/choiceness_video_collection_item_title1"
+                        android:layout_below="@id/choiceness_video_collection_of_author_item_title1"
                         android:text="@string/choiceness_tyoe" />
 
                     <TextView
-                        android:id="@+id/choiceness_video_collection_item_sperate1"
+                        android:id="@+id/choiceness_video_collection_of_author_item_sperate1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignBaseline="@id/choiceness_video_collection_item_type1"
+                        android:layout_alignBaseline="@id/choiceness_video_collection_of_author_item_type1"
                         android:layout_marginStart="@dimen/dimen_20"
-                        android:layout_toEndOf="@id/choiceness_video_collection_item_type1"
+                        android:layout_toEndOf="@id/choiceness_video_collection_of_author_item_type1"
                         android:text="/"
                         android:textColor="@color/gray"
                         android:textSize="@dimen/dimen_20_text" />
 
 
                     <TextView
+                        android:id="@+id/choiceness_video_collection_of_author_item_duration1"
                         style="@style/choiceness_video_collection_item_text__category_style"
-                        android:id="@+id/choiceness_video_collection_item_duration1"
-                        android:layout_alignBaseline="@id/choiceness_video_collection_item_type1"
+                        android:layout_alignBaseline="@id/choiceness_video_collection_of_author_item_type1"
                         android:layout_marginStart="@dimen/dimen_20"
-                        android:layout_toEndOf="@id/choiceness_video_collection_item_sperate1" />
+                        android:layout_toEndOf="@id/choiceness_video_collection_of_author_item_sperate1" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -80,7 +125,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/choiceness_video_collection_item_image2"
+                    android:id="@+id/choiceness_video_collection_of_author_item_image2"
                     style="@style/choiceness_video_collection_item_image_style" />
 
                 <RelativeLayout
@@ -90,29 +135,29 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/choiceness_video_collection_item_title2"
+                        android:id="@+id/choiceness_video_collection_of_author_item_title2"
                         style="@style/choiceness_video_collection_item_text_style" />
 
                     <TextView
+                        android:id="@+id/choiceness_video_collection_of_author_item_type2"
                         style="@style/choiceness_video_collection_item_text__category_style"
-                        android:id="@+id/choiceness_video_collection_item_type2"
-                        android:layout_below="@id/choiceness_video_collection_item_title2" />
+                        android:layout_below="@id/choiceness_video_collection_of_author_item_title2" />
 
                     <TextView
+                        android:id="@+id/choiceness_video_collection_of_author_item_sperate2"
                         style="@style/choiceness_video_collection_item_text__category_style"
-                        android:id="@+id/choiceness_video_collection_item_sperate2"
-                        android:layout_alignBaseline="@id/choiceness_video_collection_item_type2"
+                        android:layout_alignBaseline="@id/choiceness_video_collection_of_author_item_type2"
                         android:layout_marginStart="@dimen/dimen_20"
-                        android:layout_toEndOf="@id/choiceness_video_collection_item_type2"
+                        android:layout_toEndOf="@id/choiceness_video_collection_of_author_item_type2"
                         android:text="/" />
 
 
                     <TextView
+                        android:id="@+id/choiceness_video_collection_of_author_item_duration2"
                         style="@style/choiceness_video_collection_item_text__category_style"
-                        android:id="@+id/choiceness_video_collection_item_duration2"
-                        android:layout_alignBaseline="@id/choiceness_video_collection_item_type2"
+                        android:layout_alignBaseline="@id/choiceness_video_collection_of_author_item_type2"
                         android:layout_marginStart="@dimen/dimen_20"
-                        android:layout_toEndOf="@id/choiceness_video_collection_item_sperate2" />
+                        android:layout_toEndOf="@id/choiceness_video_collection_of_author_item_sperate2" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -124,7 +169,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/choiceness_video_collection_item_image3"
+                    android:id="@+id/choiceness_video_collection_of_author_item_image3"
                     style="@style/choiceness_video_collection_item_image_style" />
 
                 <RelativeLayout
@@ -134,30 +179,30 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/choiceness_video_collection_item_title3"
+                        android:id="@+id/choiceness_video_collection_of_author_item_title3"
                         style="@style/choiceness_video_collection_item_text_style" />
 
                     <TextView
+                        android:id="@+id/choiceness_video_collection_of_author_item_type3"
                         style="@style/choiceness_video_collection_item_text__category_style"
-                        android:id="@+id/choiceness_video_collection_item_type3"
-                        android:layout_below="@id/choiceness_video_collection_item_title3"
+                        android:layout_below="@id/choiceness_video_collection_of_author_item_title3"
                         android:layout_marginStart="@dimen/dimen_30" />
 
                     <TextView
+                        android:id="@+id/choiceness_video_collection_of_author_item_sperate3"
                         style="@style/choiceness_video_collection_item_text__category_style"
-                        android:id="@+id/choiceness_video_collection_item_sperate3"
-                        android:layout_alignBaseline="@id/choiceness_video_collection_item_type3"
+                        android:layout_alignBaseline="@id/choiceness_video_collection_of_author_item_type3"
                         android:layout_marginStart="@dimen/dimen_20"
-                        android:layout_toEndOf="@id/choiceness_video_collection_item_type3"
+                        android:layout_toEndOf="@id/choiceness_video_collection_of_author_item_type3"
                         android:text="/" />
 
 
                     <TextView
+                        android:id="@+id/choiceness_video_collection_of_author_item_duration3"
                         style="@style/choiceness_video_collection_item_text__category_style"
-                        android:id="@+id/choiceness_video_collection_item_duration3"
-                        android:layout_alignBaseline="@id/choiceness_video_collection_item_type3"
+                        android:layout_alignBaseline="@id/choiceness_video_collection_of_author_item_type3"
                         android:layout_marginStart="@dimen/dimen_20"
-                        android:layout_toEndOf="@id/choiceness_video_collection_item_sperate3" />
+                        android:layout_toEndOf="@id/choiceness_video_collection_of_author_item_sperate3" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -169,7 +214,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/choiceness_video_collection_item_image4"
+                    android:id="@+id/choiceness_video_collection_of_author_item_image4"
                     style="@style/choiceness_video_collection_item_image_style" />
 
                 <RelativeLayout
@@ -179,29 +224,29 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/choiceness_video_collection_item_title4"
+                        android:id="@+id/choiceness_video_collection_of_author_item_title4"
                         style="@style/choiceness_video_collection_item_text_style" />
 
                     <TextView
+                        android:id="@+id/choiceness_video_collection_of_author_item_type4"
                         style="@style/choiceness_video_collection_item_text__category_style"
-                        android:id="@+id/choiceness_video_collection_item_type4"
-                        android:layout_below="@id/choiceness_video_collection_item_title4"
+                        android:layout_below="@id/choiceness_video_collection_of_author_item_title4"
                         android:text="@string/choiceness_tyoe" />
 
                     <TextView
+                        android:id="@+id/choiceness_video_collection_of_author_item_sperate4"
                         style="@style/choiceness_video_collection_item_text__category_style"
-                        android:id="@+id/choiceness_video_collection_item_sperate4"
-                        android:layout_alignBaseline="@id/choiceness_video_collection_item_type4"
+                        android:layout_alignBaseline="@id/choiceness_video_collection_of_author_item_type4"
                         android:layout_marginStart="@dimen/dimen_20"
-                        android:layout_toEndOf="@id/choiceness_video_collection_item_type4"
-                        android:text="/"/>
+                        android:layout_toEndOf="@id/choiceness_video_collection_of_author_item_type4"
+                        android:text="/" />
 
 
                     <TextView
+                        android:id="@+id/choiceness_video_collection_of_author_item_duration4"
                         style="@style/choiceness_video_collection_item_text__category_style"
-                        android:id="@+id/choiceness_video_collection_item_duration4"
-                        android:layout_alignBaseline="@id/choiceness_video_collection_item_type4"
-                        android:layout_toEndOf="@id/choiceness_video_collection_item_sperate4" />
+                        android:layout_alignBaseline="@id/choiceness_video_collection_of_author_item_type4"
+                        android:layout_toEndOf="@id/choiceness_video_collection_of_author_item_sperate4" />
                 </RelativeLayout>
             </LinearLayout>
 
@@ -213,7 +258,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/choiceness_video_collection_item_image5"
+                    android:id="@+id/choiceness_video_collection_of_author_item_image5"
                     style="@style/choiceness_video_collection_item_image_style" />
 
                 <RelativeLayout
@@ -223,32 +268,31 @@
                     android:layout_weight="1">
 
                     <TextView
-                        android:id="@+id/choiceness_video_collection_item_title5"
-                        style="@style/choiceness_video_collection_item_text_style"
-                        />
+                        android:id="@+id/choiceness_video_collection_of_author_item_title5"
+                        style="@style/choiceness_video_collection_item_text_style" />
 
                     <TextView
+                        android:id="@+id/choiceness_video_collection_of_author_item_type5"
                         style="@style/choiceness_video_collection_item_text__category_style"
-                        android:id="@+id/choiceness_video_collection_item_type5"
-                        android:layout_below="@id/choiceness_video_collection_item_title5" />
+                        android:layout_below="@id/choiceness_video_collection_of_author_item_title5" />
 
                     <TextView
+                        android:id="@+id/choiceness_video_collection_of_author_item_sperate5"
                         style="@style/choiceness_video_collection_item_text__category_style"
-                        android:id="@+id/choiceness_video_collection_item_sperate5"
-                        android:layout_alignBaseline="@id/choiceness_video_collection_item_type5"
+                        android:layout_alignBaseline="@id/choiceness_video_collection_of_author_item_type5"
                         android:layout_marginStart="@dimen/dimen_20"
-                        android:text="/"
-                        android:layout_toEndOf="@id/choiceness_video_collection_item_type5" />
+                        android:layout_toEndOf="@id/choiceness_video_collection_of_author_item_type5"
+                        android:text="/" />
 
 
                     <TextView
+                        android:id="@+id/choiceness_video_collection_of_author_item_duration5"
                         style="@style/choiceness_video_collection_item_text__category_style"
-                        android:id="@+id/choiceness_video_collection_item_duration5"
-                        android:layout_alignBaseline="@id/choiceness_video_collection_item_type5"
+                        android:layout_alignBaseline="@id/choiceness_video_collection_of_author_item_type5"
                         android:layout_marginStart="@dimen/dimen_20"
-                        android:layout_toEndOf="@id/choiceness_video_collection_item_sperate5" />
+                        android:layout_toEndOf="@id/choiceness_video_collection_of_author_item_sperate5" />
                 </RelativeLayout>
             </LinearLayout>
         </LinearLayout>
     </HorizontalScrollView>
-</LinearLayout>
+</RelativeLayout>

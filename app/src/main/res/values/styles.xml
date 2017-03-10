@@ -49,7 +49,7 @@
         <item name="android:layout_weight">3</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">0dp</item>
-        <item name="android:src">@mipmap/ic_launcher</item>
+        <item name="android:scaleType">fitXY</item>
     </style>
     <!--精选界面item为collection里面item的标题-->
     <style name="choiceness_video_collection_item_text_style">
@@ -79,6 +79,19 @@
         <item name="android:layout_centerInParent">true</item>
         <item name="android:src">@mipmap/ic_launcher</item>
     </style>
-
+    <!--精选界面item为squareCollection里item的图片-->
+    <style name="choiceness_suqare_image">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@color/gray_middle</item>
+    </style>
+    <!--精选界面item为squareCollection里item的类型-->
+    <style name="choiceness_suqare_type">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
 </resources>
