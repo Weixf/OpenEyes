@@ -8,7 +8,14 @@ import java.util.List;
  * Describe 精选部分type为video的实体类
  */
 
-public class ChoicenessVideoBean extends ChoicenessBean{
+public class ChoicenessVideoBean extends BaseBean {
+    @Override
+    public String toString() {
+        return "ChoicenessVideoBean{" +
+                "type='" + type + '\'' +
+                ", data=" + data +
+                '}';
+    }
 
     /**
      * type : video
@@ -66,6 +73,39 @@ public class ChoicenessVideoBean extends ChoicenessBean{
     }
 
     public static class DataBean {
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "dataType='" + dataType + '\'' +
+                    ", id=" + id +
+                    ", title='" + title + '\'' +
+                    ", description='" + description + '\'' +
+                    ", provider=" + provider +
+                    ", category='" + category + '\'' +
+                    ", author=" + author +
+                    ", cover=" + cover +
+                    ", playUrl='" + playUrl + '\'' +
+                    ", duration=" + duration +
+                    ", webUrl=" + webUrl +
+                    ", releaseTime=" + releaseTime +
+                    ", consumption=" + consumption +
+                    ", campaign=" + campaign +
+                    ", waterMarks=" + waterMarks +
+                    ", adTrack=" + adTrack +
+                    ", type='" + type + '\'' +
+                    ", idx=" + idx +
+                    ", shareAdTrack=" + shareAdTrack +
+                    ", favoriteAdTrack=" + favoriteAdTrack +
+                    ", webAdTrack=" + webAdTrack +
+                    ", date=" + date +
+                    ", promotion=" + promotion +
+                    ", label=" + label +
+                    ", collected=" + collected +
+                    ", played=" + played +
+                    ", playInfo=" + playInfo +
+                    ", tags=" + tags +
+                    '}';
+        }
         private String dataType;
         private int id;
         private String title;
@@ -400,6 +440,7 @@ public class ChoicenessVideoBean extends ChoicenessBean{
             public void setIcon(String icon) {
                 this.icon = icon;
             }
+
         }
 
         public static class AuthorBean {

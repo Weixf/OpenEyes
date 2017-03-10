@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@color/white"
     android:layout_height="@dimen/dimen_120">
     <TextView
-        android:id="@+id/choiceness_textfoot_title"
+        android:id="@+id/choiceness_texthead_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textScaleX="1.6"
-        android:text="fadfdasfdsfdsfds"
-        android:typeface="serif"
-        android:textSize="@dimen/dimen_16_text"
-        android:layout_centerInParent="true"/>
+        android:text="safdfdas"
+        android:textColor="@color/black"
+        android:textSize="@dimen/dimen_24_text"
+        android:layout_centerInParent="true"
+        />
 
 </RelativeLayout>

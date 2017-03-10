@@ -1,9 +1,10 @@
 package zjhl.wxf.openeyes.api;
 
+import com.google.gson.JsonObject;
+
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;
-import zjhl.wxf.openeyes.bean.ChoicenessBean;
 
 /**
  * Created by Weixf
@@ -14,6 +15,6 @@ import zjhl.wxf.openeyes.bean.ChoicenessBean;
 public interface ApiServer {
     //得到精选部分的数据
     @GET("api/v4/tabs/selected")
-    Observable<ChoicenessBean> getChoicenessData(@Query("date") long date, @Query("num") int num, @Query("page") int page);
+    Observable<JsonObject> getChoicenessData(@Query("date") long date, @Query("num") int num, @Query("page") int page);
 
 }

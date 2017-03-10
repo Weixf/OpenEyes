@@ -43,7 +43,42 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/dimen_20_text</item>
-
     </style>
+    <!--精选界面item为collection里面item的图片-->
+    <style name="choiceness_video_collection_item_image_style">
+        <item name="android:layout_weight">3</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:src">@mipmap/ic_launcher</item>
+    </style>
+    <!--精选界面item为collection里面item的标题-->
+    <style name="choiceness_video_collection_item_text_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">@dimen/dimen_30_text</item>
+        <item name="android:text">dfadfa</item>
+    </style>
+    <!--精选界面item为collection里面item的种类-->
+    <style name="choiceness_video_collection_item_text__category_style">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">@dimen/dimen_10</item>
+        <item name="android:layout_marginTop">@dimen/dimen_10</item>
+        <item name="android:textColor">@color/gray</item>
+        <item name="android:textSize">@dimen/dimen_26_text</item>
+        <item name="android:text">dfadfad</item>
+    </style>
+    <!--精选界面item为collectionFollow里面item的图片-->
+    <style name="choiceness_video_follow_head_circle">
+        <item name="android:layout_width">@dimen/dimen_80</item>
+        <item name="android:layout_height">@dimen/dimen_80</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:src">@mipmap/ic_launcher</item>
+    </style>
+
 
 </resources>

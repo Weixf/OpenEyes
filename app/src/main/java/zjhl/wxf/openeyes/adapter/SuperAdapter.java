@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Created by Weixf
  * Date on 2017/3/6.
- * Describe
+ * Describe  万能的多布局多实体的适配器
  */
 
 public class SuperAdapter extends RecyclerView.Adapter<SuperViewHolder> {

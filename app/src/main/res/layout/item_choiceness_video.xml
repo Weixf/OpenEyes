@@ -7,48 +7,56 @@
         android:id="@+id/choiceness_video_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:scaleType="fitXY"
         android:src="@mipmap/ic_launcher" />
+    <RelativeLayout
+        android:background="@color/gray_light"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/choiceness_video_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/choiceness_video_text_example"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:textSize="@dimen/dimen_30_text" />
 
-    <TextView
-        android:id="@+id/choiceness_video_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="@string/choiceness_video_text_example"
-        android:textColor="@color/white"
-        android:textSize="@dimen/dimen_40_text" />
+        <TextView
+            android:id="@+id/choiceness_video_separator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/choiceness_video_title"
+            android:layout_centerHorizontal="true"
+            android:text="/"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_30_text" />
 
-    <TextView
-        android:id="@+id/choiceness_video_separator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/choiceness_video_title"
-        android:layout_centerHorizontal="true"
-        android:text="/"
-        android:textColor="@color/white"
-        android:textSize="@dimen/dimen_30_text" />
+        <TextView
+            android:id="@+id/choiceness_video_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choiceness_tyoe"
+            android:textColor="@color/white"
+            android:layout_marginEnd="@dimen/dimen_20"
+            android:layout_toStartOf="@id/choiceness_video_separator"
+            android:layout_alignBaseline="@id/choiceness_video_separator"
+            android:textSize="@dimen/dimen_30_text"
+            />
+        <TextView
+            android:id="@+id/choiceness_video_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/choiceness_duration"
+            android:layout_marginStart="@dimen/dimen_20"
+            android:layout_toEndOf="@id/choiceness_video_separator"
+            android:layout_alignBaseline="@id/choiceness_video_separator"
+            android:textColor="@color/white"
+            android:textSize="@dimen/dimen_30_text"
+            />
+    </RelativeLayout>
 
-    <TextView
-        android:id="@+id/choiceness_video_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/choiceness_tyoe"
-        android:textColor="@color/white"
-        android:layout_marginEnd="@dimen/dimen_20"
-        android:layout_toStartOf="@id/choiceness_video_separator"
-        android:layout_alignBaseline="@id/choiceness_video_separator"
-        android:textSize="@dimen/dimen_30_text"
-        />
-    <TextView
-        android:id="@+id/choiceness_video_duration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/choiceness_duration"
-        android:layout_marginStart="@dimen/dimen_20"
-        android:layout_toEndOf="@id/choiceness_video_separator"
-        android:layout_alignBaseline="@id/choiceness_video_separator"
-        android:textColor="@color/white"
-        android:textSize="@dimen/dimen_30_text"
-        />
+
 
 </RelativeLayout>

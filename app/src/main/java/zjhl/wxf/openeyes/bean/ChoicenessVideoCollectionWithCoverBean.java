@@ -9,6 +9,13 @@ import java.util.List;
  */
 
 public class ChoicenessVideoCollectionWithCoverBean extends BaseBean{
+    @Override
+    public String toString() {
+        return "ChoicenessVideoCollectionWithCoverBean{" +
+                "type='" + type + '\'' +
+                ", data=" + data +
+                '}';
+    }
 
     /**
      * type : videoCollectionWithCover
@@ -43,6 +50,17 @@ public class ChoicenessVideoCollectionWithCoverBean extends BaseBean{
     }
 
     public static class DataBean {
+        @Override
+        public String toString() {
+            return "DataBean{" +
+                    "dataType='" + dataType + '\'' +
+                    ", header=" + header +
+                    ", count=" + count +
+                    ", adTrack=" + adTrack +
+                    ", itemList=" + itemList +
+                    '}';
+        }
+
         private String dataType;
         /**
          * id : 130

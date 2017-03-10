@@ -10,7 +10,15 @@
     <dimen name="dimen_50_text">25sp</dimen>
     <dimen name="dimen_80">40dp</dimen>
     <dimen name="dimen_100">50dp</dimen>
+    <dimen name="dimen_120">60dp</dimen>
     <dimen name="dimen_400">200dp</dimen>
     <dimen name="dimen_160">80dp</dimen>
     <dimen name="dimen_20_text">10sp</dimen>
+    <dimen name="dimen_16_text">8sp</dimen>
+    <dimen name="dimen_300">150dp</dimen>
+    <dimen name="dimen_600">300dp</dimen>
+    <dimen name="dimen_500">250dp</dimen>
+    <dimen name="dimen_10">5dp</dimen>
+    <dimen name="dimen_24_text">12sp</dimen>
+    <dimen name="dimen_26_text">13sp</dimen>
 </resources>

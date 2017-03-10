@@ -82,9 +82,10 @@ public class DateUtil {
 
     /**
      * 获取当前时间戳 （毫秒）
+     *
      * @return
      */
-    public static long getTimeNum(){
+    public static long getTimeNum() {
         return System.currentTimeMillis();
     }
 
@@ -97,6 +98,7 @@ public class DateUtil {
         Calendar calendar = Calendar.getInstance();
         return df.format(calendar.getTime());
     }
+
     /**
      * 获取当前时间，显示格式为 2017-02-23 16:35:28
      */
@@ -109,15 +111,17 @@ public class DateUtil {
 
     /**
      * 获取当前日期年份
+     *
      * @return
      */
     public static String getYear() {
-        SimpleDateFormat df = new SimpleDateFormat(FORMAT_FULL,Locale.getDefault());
+        SimpleDateFormat df = new SimpleDateFormat(FORMAT_FULL, Locale.getDefault());
         return df.format(new Date()).substring(0, 4);
     }
 
     /**
      * 功能描述：返回月
+     *
      * @return 返回月份
      */
     public static int getMonth() {
@@ -128,6 +132,7 @@ public class DateUtil {
 
     /**
      * 功能描述：返回日
+     *
      * @return 返回日份
      */
     public static int getDay() {
@@ -150,6 +155,7 @@ public class DateUtil {
 
     /**
      * 功能描述：返回分
+     *
      * @return 返回分钟
      */
     public static int getMinute() {
@@ -160,6 +166,7 @@ public class DateUtil {
 
     /**
      * 返回秒钟
+     *
      * @return 返回秒钟
      */
     public static int getSecond() {
@@ -170,6 +177,7 @@ public class DateUtil {
 
     /**
      * 功能描述：返回毫
+     *
      * @return 返回毫
      */
     public static long getMillis() {
@@ -859,10 +867,21 @@ public class DateUtil {
     /**
      * 在搜索模块的日期中使用
      * 得到num天前的时间，暂定为7
+     *
      * @return
      */
     public static String getOtherDayDate(int num) {
         return formatTimestampToDate(DateUtil.getMaxMinusNum(System.currentTimeMillis(), num), DateUtil.FORMAT_SHORT);
+    }
+
+    /**
+     * 根据秒转化为分钟
+     *
+     * @param i
+     * @return
+     */
+    public static String secondToMinute(int i) {
+        return  i / 60 + "'" + i % 60 + "\"";
     }
 
 }

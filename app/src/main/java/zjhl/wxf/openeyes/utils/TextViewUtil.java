@@ -20,4 +20,12 @@ public class TextViewUtil {
         Typeface fromAsset = Typeface.createFromAsset(context.getAssets(), s);
         v.setTypeface(fromAsset);
     }
+    /**
+     * 设置文字显示样式(默认为下面字体)
+     * "fonts/Lobster-1.4.otf"
+     */
+    public static void setTypeFace(Context context, TextView v){
+        Typeface fromAsset = Typeface.createFromAsset(context.getAssets(), "fonts/Lobster-1.4.otf");
+        v.setTypeface(fromAsset);
+    }
 }
